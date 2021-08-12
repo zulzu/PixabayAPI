@@ -20,6 +20,9 @@
 		C9E4067926C54E230061B34A /* TextfieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */; };
 		C9E4067C26C562E60061B34A /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067B26C562E60061B34A /* UIConstants.swift */; };
 		C9E4067F26C5637C0061B34A /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067E26C5637C0061B34A /* Colours.swift */; };
+		C9E4068226C59AEE0061B34A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4068126C59AEE0061B34A /* ImageCell.swift */; };
+		C9E4068426C59B300061B34A /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4068326C59B300061B34A /* SearchResultsViewController.swift */; };
+		C9E4068726C59DAF0061B34A /* PixabaySearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4068626C59DAF0061B34A /* PixabaySearchNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldWithPadding.swift; sourceTree = "<group>"; };
 		C9E4067B26C562E60061B34A /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		C9E4067E26C5637C0061B34A /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
+		C9E4068126C59AEE0061B34A /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		C9E4068326C59B300061B34A /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		C9E4068626C59DAF0061B34A /* PixabaySearchNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabaySearchNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 				C9E4066F26C534CF0061B34A /* Model */,
 				C9E4067426C536680061B34A /* Networking */,
 				C9E4067726C539930061B34A /* SearchView */,
+				C9E4068526C59C360061B34A /* SearchResults */,
 				C9E4067A26C54E2C0061B34A /* Shared */,
 				C9E4065C26C533F60061B34A /* Main.storyboard */,
 				C9E4065F26C533F80061B34A /* Assets.xcassets */,
@@ -124,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */,
+				C9E4068626C59DAF0061B34A /* PixabaySearchNavigationController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -142,6 +150,15 @@
 				C9E4067E26C5637C0061B34A /* Colours.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C9E4068526C59C360061B34A /* SearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				C9E4068126C59AEE0061B34A /* ImageCell.swift */,
+				C9E4068326C59B300061B34A /* SearchResultsViewController.swift */,
+			);
+			path = SearchResults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,13 +232,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */,
+				C9E4068426C59B300061B34A /* SearchResultsViewController.swift in Sources */,
 				C9E4067F26C5637C0061B34A /* Colours.swift in Sources */,
+				C9E4068226C59AEE0061B34A /* ImageCell.swift in Sources */,
 				C9E4067926C54E230061B34A /* TextfieldWithPadding.swift in Sources */,
 				C9E4067C26C562E60061B34A /* UIConstants.swift in Sources */,
 				C9E4065B26C533F60061B34A /* SearchViewController.swift in Sources */,
 				C9E4066E26C534A00061B34A /* ImageInfo.swift in Sources */,
 				C9E4067626C539740061B34A /* SearchView.swift in Sources */,
 				C9E4065726C533F60061B34A /* AppDelegate.swift in Sources */,
+				C9E4068726C59DAF0061B34A /* PixabaySearchNavigationController.swift in Sources */,
 				C9E4066C26C534770061B34A /* SearchResults.swift in Sources */,
 				C9E4065926C533F60061B34A /* SceneDelegate.swift in Sources */,
 			);
