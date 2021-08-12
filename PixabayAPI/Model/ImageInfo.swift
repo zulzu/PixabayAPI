@@ -21,5 +21,5 @@ struct ImageInfo: Decodable {
   let likes: Int
   let user_id: Int
   let user: String
-  let userImageURL: URL?
+//  let userImageURL: URL?
 }

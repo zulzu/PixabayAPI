@@ -9,8 +9,20 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
   
-  var searchString = String()
+  let networkProvider: NetworkProvider
+  var searchString = ""
   private var tempLabel = UILabel()
+  
+  private var imageInfo: [ImageInfo] = []
+  
+  required init(networkProvider: NetworkProvider = NetworkProvider()) {
+    self.networkProvider = networkProvider
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func loadView() {
     view = UIView()
@@ -27,18 +39,33 @@ class SearchResultsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavbar()
+    fetchImageData(query: searchString)
   }
   
   override func viewWillAppear(_ animated: Bool) {
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
   private func setupNavbar() {
     navigationItem.title = "Gallery"
     navigationController?.navigationBar.prefersLargeTitles = false
+  }
+  
+  private func fetchImageData(query: String) {
+    networkProvider.fetchImageData(query: query, amount: 25) { (result) in
+      switch result {
+      case let .failure(error):
+        print("error")
+        print (error)
+      case let .success(imageData):
+        DispatchQueue.main.async {
+          self.imageInfo = imageData
+          if self.imageInfo.count == 0 {
+            print("no results, try different keyword")
+          }
+          print("image data: \(self.imageInfo)")
+        }
+      }
+    }
   }
 }
 

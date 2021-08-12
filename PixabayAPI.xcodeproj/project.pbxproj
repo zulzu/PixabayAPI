@@ -23,6 +23,7 @@
 		C9E4068226C59AEE0061B34A /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4068126C59AEE0061B34A /* ImageCell.swift */; };
 		C9E4068426C59B300061B34A /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4068326C59B300061B34A /* SearchResultsViewController.swift */; };
 		C9E4068726C59DAF0061B34A /* PixabaySearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4068626C59DAF0061B34A /* PixabaySearchNavigationController.swift */; };
+		C9E4068926C5B5C30061B34A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4068826C5B5C30061B34A /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		C9E4068126C59AEE0061B34A /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		C9E4068326C59B300061B34A /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		C9E4068626C59DAF0061B34A /* PixabaySearchNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabaySearchNavigationController.swift; sourceTree = "<group>"; };
+		C9E4068826C5B5C30061B34A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E4067226C5357E0061B34A /* NetworkProvider.swift */,
+				C9E4068826C5B5C30061B34A /* NetworkError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */,
+				C9E4068926C5B5C30061B34A /* NetworkError.swift in Sources */,
 				C9E4068426C59B300061B34A /* SearchResultsViewController.swift in Sources */,
 				C9E4067F26C5637C0061B34A /* Colours.swift in Sources */,
 				C9E4068226C59AEE0061B34A /* ImageCell.swift in Sources */,
