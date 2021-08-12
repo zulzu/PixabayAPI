@@ -17,6 +17,7 @@
 		C9E4066E26C534A00061B34A /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4066D26C534A00061B34A /* ImageInfo.swift */; };
 		C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067226C5357E0061B34A /* NetworkProvider.swift */; };
 		C9E4067626C539740061B34A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067526C539740061B34A /* SearchView.swift */; };
+		C9E4067926C54E230061B34A /* TextfieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C9E4066D26C534A00061B34A /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		C9E4067226C5357E0061B34A /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		C9E4067526C539740061B34A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldWithPadding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				C9E4066F26C534CF0061B34A /* Model */,
 				C9E4067426C536680061B34A /* Networking */,
 				C9E4067726C539930061B34A /* SearchView */,
+				C9E4067A26C54E2C0061B34A /* Shared */,
 				C9E4065C26C533F60061B34A /* Main.storyboard */,
 				C9E4065F26C533F80061B34A /* Assets.xcassets */,
 				C9E4066126C533F80061B34A /* LaunchScreen.storyboard */,
@@ -109,6 +112,14 @@
 				C9E4065A26C533F60061B34A /* SearchViewController.swift */,
 			);
 			path = SearchView;
+			sourceTree = "<group>";
+		};
+		C9E4067A26C54E2C0061B34A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */,
+				C9E4067926C54E230061B34A /* TextfieldWithPadding.swift in Sources */,
 				C9E4065B26C533F60061B34A /* SearchViewController.swift in Sources */,
 				C9E4066E26C534A00061B34A /* ImageInfo.swift in Sources */,
 				C9E4067626C539740061B34A /* SearchView.swift in Sources */,
