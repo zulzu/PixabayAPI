@@ -18,6 +18,8 @@
 		C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067226C5357E0061B34A /* NetworkProvider.swift */; };
 		C9E4067626C539740061B34A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067526C539740061B34A /* SearchView.swift */; };
 		C9E4067926C54E230061B34A /* TextfieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */; };
+		C9E4067C26C562E60061B34A /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067B26C562E60061B34A /* UIConstants.swift */; };
+		C9E4067F26C5637C0061B34A /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4067E26C5637C0061B34A /* Colours.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		C9E4067226C5357E0061B34A /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		C9E4067526C539740061B34A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldWithPadding.swift; sourceTree = "<group>"; };
+		C9E4067B26C562E60061B34A /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		C9E4067E26C5637C0061B34A /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 		C9E4065526C533F60061B34A /* PixabayAPI */ = {
 			isa = PBXGroup;
 			children = (
+				C9E4067D26C562F00061B34A /* Utils */,
+				C9E4068026C563830061B34A /* Extensions */,
 				C9E4066A26C534270061B34A /* Delegates */,
 				C9E4066F26C534CF0061B34A /* Model */,
 				C9E4067426C536680061B34A /* Networking */,
@@ -120,6 +126,22 @@
 				C9E4067826C54E230061B34A /* TextfieldWithPadding.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		C9E4067D26C562F00061B34A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C9E4067B26C562E60061B34A /* UIConstants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C9E4068026C563830061B34A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C9E4067E26C5637C0061B34A /* Colours.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +215,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */,
+				C9E4067F26C5637C0061B34A /* Colours.swift in Sources */,
 				C9E4067926C54E230061B34A /* TextfieldWithPadding.swift in Sources */,
+				C9E4067C26C562E60061B34A /* UIConstants.swift in Sources */,
 				C9E4065B26C533F60061B34A /* SearchViewController.swift in Sources */,
 				C9E4066E26C534A00061B34A /* ImageInfo.swift in Sources */,
 				C9E4067626C539740061B34A /* SearchView.swift in Sources */,

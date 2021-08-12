@@ -11,7 +11,7 @@ class SearchView: UIView {
   
   let bgView: UIView = {
     let bgView = UIView()
-    bgView.backgroundColor = .black
+    bgView.backgroundColor = .bgColour
     bgView.translatesAutoresizingMaskIntoConstraints = false
     return bgView
   }()
@@ -35,9 +35,9 @@ class SearchView: UIView {
   
   let title: UILabel = {
     let title = UILabel()
-    title.font = UIFont.systemFont(ofSize: 20)
+    title.font = UIFont.systemFont(ofSize: kUI.Size.regularFont)
     title.text = "Stunning free images"
-    title.textColor = .black
+    title.textColor = .mainTextColour
     title.numberOfLines = 0
     title.textAlignment = .left
     title.translatesAutoresizingMaskIntoConstraints = false
@@ -47,13 +47,13 @@ class SearchView: UIView {
   let textView: TextFieldWithPadding = {
     let textView = TextFieldWithPadding()
     textView.translatesAutoresizingMaskIntoConstraints = false
-    textView.backgroundColor = .white
-    textView.layer.cornerRadius = 10
+    textView.backgroundColor = UIColor.textFieldBG
+    textView.layer.cornerRadius = kUI.Size.cornerRadius
     textView.font = UIFont.preferredFont(forTextStyle: .body)
-    textView.textColor = .black
+    textView.textColor = UIColor.mainTextColour
     textView.attributedPlaceholder = NSAttributedString(string: "Search images",
-                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-    textView.layer.borderColor = UIColor.blue.cgColor
+                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldTextColour])
+    textView.layer.borderColor = UIColor.textFieldTextColour.cgColor
     textView.layer.borderWidth = 1
     textView.textAlignment = NSTextAlignment.justified
     return textView
@@ -62,8 +62,8 @@ class SearchView: UIView {
   let searchButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.backgroundColor = .black
-    button.layer.cornerRadius = 8
+    button.backgroundColor = .buttonColour
+    button.layer.cornerRadius = kUI.Size.cornerRadius
     button.setTitle("Search now", for: UIControl.State.normal)
     button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     return button
@@ -73,7 +73,7 @@ class SearchView: UIView {
   
   private func setupView() {
     
-    backgroundColor = .black
+    backgroundColor = .bgColour
     
     addSubview(bgView)
     bgView.insertSubview(bgImage, at: 0)
@@ -97,32 +97,32 @@ class SearchView: UIView {
     ])
     
     NSLayoutConstraint.activate([
-      pixabayLogo.topAnchor.constraint(equalTo: bgView.topAnchor, constant: 60),
-      pixabayLogo.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      pixabayLogo.heightAnchor.constraint(equalToConstant: 40),
+      pixabayLogo.topAnchor.constraint(equalTo: bgView.topAnchor, constant: kUI.Padding.largePadding * 2),
+      pixabayLogo.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
+      pixabayLogo.heightAnchor.constraint(equalToConstant: kUI.Size.pixaLogoHeight),
       pixabayLogo.widthAnchor.constraint(equalToConstant: calculateLogoWidth())
     ])
     
     NSLayoutConstraint.activate([
-      title.topAnchor.constraint(equalTo: pixabayLogo.bottomAnchor, constant: 40),
-      title.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      title.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
+      title.topAnchor.constraint(equalTo: pixabayLogo.bottomAnchor, constant: kUI.Padding.largePadding),
+      title.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
+      title.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kUI.Padding.defaultPadding),
     ])
     
     NSLayoutConstraint.activate([
       
-      textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20),
-      textView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      textView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
-      textView.heightAnchor.constraint(equalToConstant: 60)
+      textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: kUI.Padding.defaultPadding),
+      textView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
+      textView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kUI.Padding.defaultPadding),
+      textView.heightAnchor.constraint(equalToConstant: kUI.Size.textFieldHeight)
     ])
     
     NSLayoutConstraint.activate([
       
-      searchButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 20),
-      searchButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-      searchButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
-      searchButton.heightAnchor.constraint(equalToConstant: 60)
+      searchButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: kUI.Padding.defaultPadding),
+      searchButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
+      searchButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kUI.Padding.defaultPadding),
+      searchButton.heightAnchor.constraint(equalToConstant: kUI.Size.searchButtonHeight)
     ])
   }
   
