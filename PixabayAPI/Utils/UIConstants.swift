@@ -10,6 +10,15 @@ import UIKit
 /// UI element size constants
 enum kUI {
   
+  enum ImageSize {
+    static let large: CGFloat = 400
+    static let regular: CGFloat = 250
+    static let small: CGFloat = 125
+    static let largeSquare: CGSize = CGSize(width: kUI.ImageSize.large, height: kUI.ImageSize.large)
+    static let regularSquare: CGSize = CGSize(width: kUI.ImageSize.regular, height: kUI.ImageSize.regular)
+    static let smallSquare: CGSize = CGSize(width: kUI.ImageSize.small, height: kUI.ImageSize.small)
+  }
+  
   enum Padding {
     static let defaultPadding: CGFloat = 20
     static let largePadding: CGFloat = 30

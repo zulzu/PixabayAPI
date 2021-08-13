@@ -81,16 +81,34 @@ class SearchResultsViewController: UIViewController {
     networkProvider.fetchImageData(query: query, amount: 25) { (result) in
       switch result {
       case let .failure(error):
+        self.presentAlert(title: "Error", message: "Detailed error messages are not implemented")
         print (error)
       case let .success(imageData):
         DispatchQueue.main.async {
           self.imageInfo = imageData
           if self.imageInfo.count == 0 {
-            print("no results, try different keyword")
+            self.presentAlert(title: "No results", message: "Try to use different keywords")
           }
         }
       }
     }
+  }
+  
+  private func calculateCellHeight(indexPathRow: Int) -> CGFloat {
+    let images = imageInfo
+    let defaultSize = kUI.ImageSize.regular + kUI.Padding.defaultPadding
+    let imageWidth = Double(images[indexPathRow].webformatWidth)
+    let imageHeight = Double(images[indexPathRow].webformatHeight)
+    let contentWidth = Double(UIScreen.main.bounds.width - (kUI.Padding.defaultPadding * 2))
+    let cellHeight = (imageHeight / (imageWidth / contentWidth))
+    return cellHeight > 0 ? CGFloat(cellHeight) : defaultSize
+  }
+  
+  private func presentAlert(title: String, message: String) {
+    let alerController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "OK", style: .destructive) { _ in }
+    alerController.addAction(okAction)
+    self.present(alerController, animated: true, completion: nil)
   }
 }
 
@@ -116,7 +134,6 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 300
+    return calculateCellHeight(indexPathRow: indexPath.row)
   }
-  
 }
