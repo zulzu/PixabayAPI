@@ -9,15 +9,15 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
   
-  let networkProvider: NetworkProvider
   var searchString = ""
-  
+  private let networkProvider: NetworkProvider
   private let imagesTableView = UITableView()
   private var imageInfo: [ImageInfo] = [] {
     didSet {
       self.imagesTableView.reloadData()
     }
   }
+  private let cache = NSCache<NSNumber, UIImage>()
   
   required init(networkProvider: NetworkProvider = NetworkProvider()) {
     self.networkProvider = networkProvider
@@ -122,11 +122,21 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! ImageCell
     cell.backgroundColor = UIColor.bgColour
     cell.selectionStyle = .none
-    
-    if let url = getImageURL(row: indexPath.row) {
-      networkProvider.fetchImage(url: url) { image in
-        DispatchQueue.main.async {
-          cell.searchImage.image = image
+    //sets the value for the cached item
+    let itemNumber = NSNumber(value: indexPath.item)
+    //sets the product image
+    if let cachedImage = self.cache.object(forKey: itemNumber) {
+      cell.searchImage.image = cachedImage
+    } else {
+      if let url = getImageURL(row: indexPath.row) {
+        networkProvider.fetchImage(url: url) { image in
+          DispatchQueue.main.async {
+            guard let downloadedImage = image else {
+              return cell.searchImage.image = UIImage(named: "missingImage")
+            }
+            cell.searchImage.image = downloadedImage
+            self.cache.setObject(downloadedImage, forKey: itemNumber)
+          }
         }
       }
     }
