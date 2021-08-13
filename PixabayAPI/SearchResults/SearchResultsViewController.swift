@@ -11,9 +11,13 @@ class SearchResultsViewController: UIViewController {
   
   let networkProvider: NetworkProvider
   var searchString = ""
-  private var tempLabel = UILabel()
   
-  private var imageInfo: [ImageInfo] = []
+  private let imagesTableView = UITableView()
+  private var imageInfo: [ImageInfo] = [] {
+    didSet {
+      self.imagesTableView.reloadData()
+    }
+  }
   
   required init(networkProvider: NetworkProvider = NetworkProvider()) {
     self.networkProvider = networkProvider
@@ -24,37 +28,59 @@ class SearchResultsViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override func loadView() {
-    view = UIView()
-    view.backgroundColor = .bgColour
-    view.addSubview(tempLabel)
-    tempLabel.text = searchString
-    
-    tempLabel.translatesAutoresizingMaskIntoConstraints = false
-    tempLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
-    tempLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-    tempLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupNavbar()
     fetchImageData(query: searchString)
+    setupNavbar()
+    setupViews()
+    setupLayouts()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
+  private func setupViews() {
+    view.backgroundColor = .bgColour
+    imagesTableView.dataSource = self
+    imagesTableView.delegate = self
+    view.addSubview(imagesTableView)
+    imagesTableView.register(ImageCell.self, forCellReuseIdentifier: "searchCell")
+    imagesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+    imagesTableView.bounces = false
+  }
+  
+  private func setupLayouts() {
+    imagesTableView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      imagesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      imagesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUI.Padding.defaultPadding),
+      imagesTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+      imagesTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+    ])
   }
   
   private func setupNavbar() {
     navigationItem.title = "Gallery"
-    navigationController?.navigationBar.prefersLargeTitles = false
+  }
+  
+  private func getImageURL(row: Int) -> URL? {
+    guard row <= imageInfo.count
+    else {
+      return URL(fileURLWithPath: "missingImageURL")
+    }
+    return imageInfo[row].largeImageURL
+  }
+  
+  private func getImageId(row: Int) -> Int {
+    guard row <= imageInfo.count
+    else {
+      // this means there was an error, something useful shoud happen here...
+      return 1
+    }
+    return imageInfo[row].id
   }
   
   private func fetchImageData(query: String) {
     networkProvider.fetchImageData(query: query, amount: 25) { (result) in
       switch result {
       case let .failure(error):
-        print("error")
         print (error)
       case let .success(imageData):
         DispatchQueue.main.async {
@@ -62,7 +88,6 @@ class SearchResultsViewController: UIViewController {
           if self.imageInfo.count == 0 {
             print("no results, try different keyword")
           }
-          print("image data: \(self.imageInfo)")
         }
       }
     }
@@ -70,13 +95,28 @@ class SearchResultsViewController: UIViewController {
 }
 
 extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return imageInfo.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let tempCell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
-    tempCell.backgroundColor = UIColor.bgColour
-    return tempCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! ImageCell
+    cell.backgroundColor = UIColor.bgColour
+    cell.selectionStyle = .none
+    
+    if let url = getImageURL(row: indexPath.row) {
+      networkProvider.fetchImage(url: url) { image in
+        DispatchQueue.main.async {
+          cell.searchImage.image = image
+        }
+      }
+    }
+    return cell
   }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 300
+  }
+  
 }

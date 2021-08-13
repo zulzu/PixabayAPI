@@ -74,4 +74,16 @@ class NetworkProvider {
     }
   }
   
+  // Fetch single image
+  func fetchImage(url: URL, callback: @escaping (UIImage?) -> Void) {
+    
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+      guard let data = data, error == nil else {
+        callback(nil)
+        return
+      }
+      callback(UIImage(data: data)!)
+    }
+    task.resume()
+  }
 }
