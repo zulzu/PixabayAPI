@@ -31,9 +31,12 @@ class SearchResultsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     fetchImageData(query: searchString)
-    setupNavbar()
     setupViews()
     setupLayouts()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    setupNavbar()
   }
   
   private func setupViews() {
@@ -104,11 +107,21 @@ class SearchResultsViewController: UIViewController {
     return cellHeight > 0 ? CGFloat(cellHeight) : defaultSize
   }
   
-  private func presentAlert(title: String, message: String) {
-    let alerController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "OK", style: .destructive) { _ in }
-    alerController.addAction(okAction)
-    self.present(alerController, animated: true, completion: nil)
+  private func updateNavbar() {
+    navigationController?.setNavigationBarHidden(false, animated: true)
+    let backButton = UIBarButtonItem()
+    backButton.title = "Back"
+    backButton.tintColor = .mainTextColour
+    navigationItem.backBarButtonItem = backButton
+    navigationItem.title = ""
+  }
+  
+  private func calculateImageSize(image: UIImage) -> CGSize {
+    let originalWidth = image.size.width
+    let originalHeight = image.size.height
+    let newWidth = UIScreen.main.bounds.width * 1.2
+    let newHeight = originalHeight/(originalWidth/newWidth)
+    return CGSize(width: newWidth, height: newHeight)
   }
 }
 
@@ -124,7 +137,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     cell.selectionStyle = .none
     //sets the value for the cached item
     let itemNumber = NSNumber(value: indexPath.item)
-    //sets the product image
+    //sets the image
     if let cachedImage = self.cache.object(forKey: itemNumber) {
       cell.searchImage.image = cachedImage
     } else {
@@ -145,5 +158,18 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return calculateCellHeight(indexPathRow: indexPath.row)
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let cell = tableView.cellForRow(at: indexPath) as! ImageCell
+    guard let imageToPass = cell.searchImage.image else {
+      return
+    }
+    let newSize = calculateImageSize(image: imageToPass)
+    let detailsVC = ImageDetailViewController(imageInfo: imageInfo[indexPath.row],
+                                              image: imageToPass.resizeImage(targetSize: newSize),
+                                              viewHeight: newSize.height + 150)
+    updateNavbar()
+    navigationController?.pushViewController(detailsVC, animated: true)
   }
 }

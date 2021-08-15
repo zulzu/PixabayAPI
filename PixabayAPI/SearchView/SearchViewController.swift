@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.dismissKeyboard()
   }
   
   override func viewWillAppear(_ animated: Bool) {
