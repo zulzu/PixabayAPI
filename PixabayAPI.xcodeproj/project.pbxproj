@@ -27,6 +27,7 @@
 		C9E4072E26C9729D0061B34A /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4072D26C9729D0061B34A /* ImageDetailViewController.swift */; };
 		C9E4073026C973030061B34A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4072F26C973030061B34A /* UIImage.swift */; };
 		C9E4073226C975F90061B34A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073126C975F90061B34A /* UIViewController.swift */; };
+		C9E4073426C9C4DC0061B34A /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073326C9C4DC0061B34A /* SearchResultsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		C9E4072D26C9729D0061B34A /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		C9E4072F26C973030061B34A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C9E4073126C975F90061B34A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		C9E4073326C9C4DC0061B34A /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E4068126C59AEE0061B34A /* ImageCell.swift */,
+				C9E4073326C9C4DC0061B34A /* SearchResultsViewModel.swift */,
 				C9E4068326C59B300061B34A /* SearchResultsViewController.swift */,
 			);
 			path = SearchResults;
@@ -257,6 +260,7 @@
 				C9E4067F26C5637C0061B34A /* Colours.swift in Sources */,
 				C9E4068226C59AEE0061B34A /* ImageCell.swift in Sources */,
 				C9E4067926C54E230061B34A /* TextfieldWithPadding.swift in Sources */,
+				C9E4073426C9C4DC0061B34A /* SearchResultsViewModel.swift in Sources */,
 				C9E4073026C973030061B34A /* UIImage.swift in Sources */,
 				C9E4067C26C562E60061B34A /* UIConstants.swift in Sources */,
 				C9E4065B26C533F60061B34A /* SearchViewController.swift in Sources */,

@@ -9,18 +9,17 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
   
+  lazy var viewModel = SearchResultsViewModel(
+    imageInfoDidUpdate: { [weak self] in
+      self?.imagesTableView.reloadData()
+      self?.checkSearchResults()
+    })
   var searchString = ""
-  private let networkProvider: NetworkProvider
-  private let imagesTableView = UITableView()
-  private var imageInfo: [ImageInfo] = [] {
-    didSet {
-      self.imagesTableView.reloadData()
-    }
-  }
+  private let imagesTableView: UITableView
   private let cache = NSCache<NSNumber, UIImage>()
   
-  required init(networkProvider: NetworkProvider = NetworkProvider()) {
-    self.networkProvider = networkProvider
+  required init(tableView: UITableView = UITableView()) {
+    self.imagesTableView = tableView
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -30,7 +29,7 @@ class SearchResultsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    fetchImageData(query: searchString)
+    viewModel.fetchImageData(query: searchString)
     setupViews()
     setupLayouts()
   }
@@ -63,40 +62,6 @@ class SearchResultsViewController: UIViewController {
     navigationItem.title = "Gallery"
   }
   
-  func getImageURL(row: Int, images: [ImageInfo]) -> URL? {
-    guard row <= images.count
-    else {
-      return URL(fileURLWithPath: "missingImageURL")
-    }
-    return images[row].largeImageURL
-  }
-  
-  func calculateCellHeight(row: Int, images: [ImageInfo]) -> CGFloat {
-    let defaultSize = kUI.ImageSize.regular + kUI.Padding.defaultPadding
-    let imageWidth = Double(images[row].webformatWidth)
-    let imageHeight = Double(images[row].webformatHeight)
-    let contentWidth = Double(UIScreen.main.bounds.width - (kUI.Padding.defaultPadding * 2))
-    let cellHeight = round( (imageHeight / (imageWidth / contentWidth)) * 100 ) / 100
-    return cellHeight > 0 ? CGFloat(cellHeight) : defaultSize
-  }
-  
-  private func fetchImageData(query: String) {
-    networkProvider.fetchImageData(url: networkProvider.createURL(query: query, amount: 25)) { (result) in
-      switch result {
-      case let .failure(error):
-        self.presentAlert(title: "Error", message: "Detailed error messages are not implemented")
-        print (error)
-      case let .success(imageData):
-        DispatchQueue.main.async {
-          self.imageInfo = imageData
-          if self.imageInfo.count == 0 {
-            self.presentAlert(title: "No results", message: "Try to use different keywords")
-          }
-        }
-      }
-    }
-  }
-  
   private func updateNavbar() {
     navigationController?.setNavigationBarHidden(false, animated: true)
     let backButton = UIBarButtonItem()
@@ -106,19 +71,15 @@ class SearchResultsViewController: UIViewController {
     navigationItem.title = ""
   }
   
-  private func calculateImageSize(image: UIImage) -> CGSize {
-    let originalWidth = image.size.width
-    let originalHeight = image.size.height
-    let newWidth = UIScreen.main.bounds.width * 1.2
-    let newHeight = originalHeight/(originalWidth/newWidth)
-    return CGSize(width: newWidth, height: newHeight)
+  private func checkSearchResults() {
+    viewModel.imageInfo.isEmpty ? self.presentAlert(title: "No results", message: "Try to use different keywords") : nil
   }
 }
 
 extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return imageInfo.count
+    return viewModel.imageInfo.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,8 +92,8 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     if let cachedImage = self.cache.object(forKey: itemNumber) {
       cell.searchImage.image = cachedImage
     } else {
-      if let url = getImageURL(row: indexPath.row, images: imageInfo) {
-        networkProvider.fetchImage(url: url) { image in
+      if let url = viewModel.getImageURL(row: indexPath.row, images: viewModel.imageInfo) {
+        viewModel.networkProvider.fetchImage(url: url) { image in
           DispatchQueue.main.async {
             guard let downloadedImage = image else {
               return cell.searchImage.image = UIImage(named: "missingImage")
@@ -147,7 +108,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return calculateCellHeight(row: indexPath.row, images: imageInfo)
+    return viewModel.calculateCellHeight(row: indexPath.row, images: viewModel.imageInfo)
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -155,8 +116,8 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     guard let imageToPass = cell.searchImage.image else {
       return
     }
-    let newSize = calculateImageSize(image: imageToPass)
-    let detailsVC = ImageDetailViewController(imageInfo: imageInfo[indexPath.row],
+    let newSize = viewModel.calculateImageSize(image: imageToPass)
+    let detailsVC = ImageDetailViewController(imageInfo: viewModel.imageInfo[indexPath.row],
                                               image: imageToPass.resizeImage(targetSize: newSize),
                                               viewHeight: newSize.height + 150)
     updateNavbar()
