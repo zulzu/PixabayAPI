@@ -9,7 +9,6 @@ import UIKit
 
 class ImageDetailViewController: UIViewController {
   
-  let networkProvider: NetworkProvider
   let imageInfo: ImageInfo
   let image: UIImage
   let viewHeight: CGFloat
@@ -18,11 +17,9 @@ class ImageDetailViewController: UIViewController {
     return detailsView
   }()
   
-  init(networkProvider: NetworkProvider = NetworkProvider(),
-       imageInfo: ImageInfo,
+  init(imageInfo: ImageInfo,
        image: UIImage,
        viewHeight: CGFloat) {
-    self.networkProvider = networkProvider
     self.imageInfo = imageInfo
     self.image = image
     self.viewHeight = viewHeight
@@ -37,7 +34,7 @@ class ImageDetailViewController: UIViewController {
     
     view = imageDetailView
     imageDetailView.bgImage.image = image
-    imageDetailView.numberOfLikes.text = "Number of likes: \(imageInfo.likes)"
     imageDetailView.userName.text = "Photographer: " + imageInfo.user
+    imageDetailView.numberOfLikes.text = "Number of likes: \(imageInfo.likes)"
   }
 }

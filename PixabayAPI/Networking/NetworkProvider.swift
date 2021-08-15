@@ -12,7 +12,7 @@ class NetworkProvider {
   private let apiKey = "13197033-03eec42c293d2323112b4cca6"
   
   // Url creation, more info here: https://pixabay.com/api/docs/#api_search_images
-  private func createURL(query: String, amount: Int) -> URL? {
+  func createURL(query: String, amount: Int) -> URL? {
     var baseUrlComponents: URLComponents {
       var urlComponents = URLComponents(string: "https://pixabay.com/api")!
       urlComponents.queryItems = [URLQueryItem(name: "key", value: apiKey)]
@@ -29,12 +29,11 @@ class NetworkProvider {
   
   //TODO: value must be between 3-200, limit it? | maybe more parameters later?
   func fetchImageData(
-    query: String,
-    amount: Int,
+    url: URL?,
     completion: @escaping (Result<[ImageInfo], NetworkError>) -> Void
   ) {
     
-    guard let url = createURL(query: query, amount: amount) else {
+    guard let url = url else {
       completion(.failure(.missingUrl))
       return
     }

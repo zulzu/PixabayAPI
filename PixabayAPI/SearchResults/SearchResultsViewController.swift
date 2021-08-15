@@ -63,25 +63,25 @@ class SearchResultsViewController: UIViewController {
     navigationItem.title = "Gallery"
   }
   
-  private func getImageURL(row: Int) -> URL? {
-    guard row <= imageInfo.count
+  func getImageURL(row: Int, images: [ImageInfo]) -> URL? {
+    guard row <= images.count
     else {
       return URL(fileURLWithPath: "missingImageURL")
     }
-    return imageInfo[row].largeImageURL
+    return images[row].largeImageURL
   }
   
-  private func getImageId(row: Int) -> Int {
-    guard row <= imageInfo.count
-    else {
-      // this means there was an error, something useful shoud happen here...
-      return 1
-    }
-    return imageInfo[row].id
+  func calculateCellHeight(row: Int, images: [ImageInfo]) -> CGFloat {
+    let defaultSize = kUI.ImageSize.regular + kUI.Padding.defaultPadding
+    let imageWidth = Double(images[row].webformatWidth)
+    let imageHeight = Double(images[row].webformatHeight)
+    let contentWidth = Double(UIScreen.main.bounds.width - (kUI.Padding.defaultPadding * 2))
+    let cellHeight = round( (imageHeight / (imageWidth / contentWidth)) * 100 ) / 100
+    return cellHeight > 0 ? CGFloat(cellHeight) : defaultSize
   }
   
   private func fetchImageData(query: String) {
-    networkProvider.fetchImageData(query: query, amount: 25) { (result) in
+    networkProvider.fetchImageData(url: networkProvider.createURL(query: query, amount: 25)) { (result) in
       switch result {
       case let .failure(error):
         self.presentAlert(title: "Error", message: "Detailed error messages are not implemented")
@@ -95,16 +95,6 @@ class SearchResultsViewController: UIViewController {
         }
       }
     }
-  }
-  
-  private func calculateCellHeight(indexPathRow: Int) -> CGFloat {
-    let images = imageInfo
-    let defaultSize = kUI.ImageSize.regular + kUI.Padding.defaultPadding
-    let imageWidth = Double(images[indexPathRow].webformatWidth)
-    let imageHeight = Double(images[indexPathRow].webformatHeight)
-    let contentWidth = Double(UIScreen.main.bounds.width - (kUI.Padding.defaultPadding * 2))
-    let cellHeight = (imageHeight / (imageWidth / contentWidth))
-    return cellHeight > 0 ? CGFloat(cellHeight) : defaultSize
   }
   
   private func updateNavbar() {
@@ -141,7 +131,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     if let cachedImage = self.cache.object(forKey: itemNumber) {
       cell.searchImage.image = cachedImage
     } else {
-      if let url = getImageURL(row: indexPath.row) {
+      if let url = getImageURL(row: indexPath.row, images: imageInfo) {
         networkProvider.fetchImage(url: url) { image in
           DispatchQueue.main.async {
             guard let downloadedImage = image else {
@@ -157,7 +147,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return calculateCellHeight(indexPathRow: indexPath.row)
+    return calculateCellHeight(row: indexPath.row, images: imageInfo)
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

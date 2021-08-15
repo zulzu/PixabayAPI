@@ -41,9 +41,9 @@ class ImageDetailView: UIView {
     return bgImage
   }()
   
-  let numberOfLikes: UILabel = {
+  let userName: UILabel = {
     let title = UILabel()
-    title.font = UIFont.systemFont(ofSize: kUI.Size.regularFont)
+    title.font = UIFont.boldSystemFont(ofSize: kUI.Size.regularFont)
     title.textColor = .mainTextColour
     title.numberOfLines = 2
     title.textAlignment = .left
@@ -51,11 +51,11 @@ class ImageDetailView: UIView {
     return title
   }()
   
-  let userName: UILabel = {
+  let numberOfLikes: UILabel = {
     let title = UILabel()
-    title.font = UIFont.boldSystemFont(ofSize: kUI.Size.regularFont)
+    title.font = UIFont.systemFont(ofSize: kUI.Size.regularFont)
     title.textColor = .mainTextColour
-    title.numberOfLines = 0
+    title.numberOfLines = 2
     title.textAlignment = .left
     title.translatesAutoresizingMaskIntoConstraints = false
     return title
@@ -67,8 +67,8 @@ class ImageDetailView: UIView {
     scrollView.addSubview(scrollViewContainer)
     scrollViewContainer.addSubview(bgView)
     bgView.insertSubview(bgImage, at: 0)
-    bgView.addSubview(numberOfLikes)
     bgView.addSubview(userName)
+    bgView.addSubview(numberOfLikes)
   }
   
   private func setupConstraints() {
@@ -97,14 +97,14 @@ class ImageDetailView: UIView {
       bgImage.centerXAnchor.constraint(equalTo: bgView.centerXAnchor),
     ])
     NSLayoutConstraint.activate([
-      numberOfLikes.topAnchor.constraint(equalTo: bgImage.bottomAnchor, constant: kUI.Padding.defaultPadding),
-      numberOfLikes.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: kUI.Padding.defaultPadding),
-      numberOfLikes.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: -kUI.Padding.defaultPadding),
+      userName.topAnchor.constraint(equalTo: bgImage.bottomAnchor, constant: kUI.Padding.defaultPadding),
+      userName.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: kUI.Padding.defaultPadding),
+      userName.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: -kUI.Padding.defaultPadding),
     ])
     NSLayoutConstraint.activate([
-      userName.topAnchor.constraint(equalTo: numberOfLikes.bottomAnchor, constant: kUI.Padding.defaultPadding),
-      userName.leadingAnchor.constraint(equalTo: numberOfLikes.leadingAnchor, constant: 0),
-      userName.trailingAnchor.constraint(equalTo: numberOfLikes.trailingAnchor, constant: 0),
+      numberOfLikes.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: kUI.Padding.defaultPadding),
+      numberOfLikes.leadingAnchor.constraint(equalTo: userName.leadingAnchor, constant: 0),
+      numberOfLikes.trailingAnchor.constraint(equalTo: userName.trailingAnchor, constant: 0),
     ])
   }
   
