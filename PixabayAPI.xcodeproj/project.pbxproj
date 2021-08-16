@@ -28,7 +28,18 @@
 		C9E4073026C973030061B34A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4072F26C973030061B34A /* UIImage.swift */; };
 		C9E4073226C975F90061B34A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073126C975F90061B34A /* UIViewController.swift */; };
 		C9E4073426C9C4DC0061B34A /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073326C9C4DC0061B34A /* SearchResultsViewModel.swift */; };
+		C9E4073C26C9D9BE0061B34A /* PixabayAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073B26C9D9BE0061B34A /* PixabayAPITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9E4073E26C9D9BE0061B34A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9E4064B26C533F60061B34A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9E4065226C533F60061B34A;
+			remoteInfo = PixabayAPI;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C9E4065326C533F60061B34A /* PixabayAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixabayAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,10 +65,20 @@
 		C9E4072F26C973030061B34A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C9E4073126C975F90061B34A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C9E4073326C9C4DC0061B34A /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
+		C9E4073926C9D9BE0061B34A /* PixabayAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixabayAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9E4073B26C9D9BE0061B34A /* PixabayAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayAPITests.swift; sourceTree = "<group>"; };
+		C9E4073D26C9D9BE0061B34A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C9E4065026C533F60061B34A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9E4073626C9D9BE0061B34A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -71,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E4065526C533F60061B34A /* PixabayAPI */,
+				C9E4073A26C9D9BE0061B34A /* PixabayAPITests */,
 				C9E4065426C533F60061B34A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E4065326C533F60061B34A /* PixabayAPI.app */,
+				C9E4073926C9D9BE0061B34A /* PixabayAPITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +207,15 @@
 			path = ImageDetailView;
 			sourceTree = "<group>";
 		};
+		C9E4073A26C9D9BE0061B34A /* PixabayAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				C9E4073B26C9D9BE0061B34A /* PixabayAPITests.swift */,
+				C9E4073D26C9D9BE0061B34A /* Info.plist */,
+			);
+			path = PixabayAPITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,6 +236,24 @@
 			productReference = C9E4065326C533F60061B34A /* PixabayAPI.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C9E4073826C9D9BE0061B34A /* PixabayAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9E4074026C9D9BE0061B34A /* Build configuration list for PBXNativeTarget "PixabayAPITests" */;
+			buildPhases = (
+				C9E4073526C9D9BE0061B34A /* Sources */,
+				C9E4073626C9D9BE0061B34A /* Frameworks */,
+				C9E4073726C9D9BE0061B34A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9E4073F26C9D9BE0061B34A /* PBXTargetDependency */,
+			);
+			name = PixabayAPITests;
+			productName = PixabayAPITests;
+			productReference = C9E4073926C9D9BE0061B34A /* PixabayAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -215,6 +265,10 @@
 				TargetAttributes = {
 					C9E4065226C533F60061B34A = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					C9E4073826C9D9BE0061B34A = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = C9E4065226C533F60061B34A;
 					};
 				};
 			};
@@ -232,6 +286,7 @@
 			projectRoot = "";
 			targets = (
 				C9E4065226C533F60061B34A /* PixabayAPI */,
+				C9E4073826C9D9BE0061B34A /* PixabayAPITests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,6 +298,13 @@
 			files = (
 				C9E4066326C533F80061B34A /* LaunchScreen.storyboard in Resources */,
 				C9E4066026C533F80061B34A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9E4073726C9D9BE0061B34A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +337,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9E4073526C9D9BE0061B34A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9E4073C26C9D9BE0061B34A /* PixabayAPITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9E4073F26C9D9BE0061B34A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9E4065226C533F60061B34A /* PixabayAPI */;
+			targetProxy = C9E4073E26C9D9BE0061B34A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C9E4066126C533F80061B34A /* LaunchScreen.storyboard */ = {
@@ -445,6 +523,46 @@
 			};
 			name = Release;
 		};
+		C9E4074126C9D9BE0061B34A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7U8H9SK8NB;
+				INFOPLIST_FILE = PixabayAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrasPal.PixabayAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PixabayAPI.app/PixabayAPI";
+			};
+			name = Debug;
+		};
+		C9E4074226C9D9BE0061B34A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7U8H9SK8NB;
+				INFOPLIST_FILE = PixabayAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrasPal.PixabayAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PixabayAPI.app/PixabayAPI";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -462,6 +580,15 @@
 			buildConfigurations = (
 				C9E4066826C533F80061B34A /* Debug */,
 				C9E4066926C533F80061B34A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9E4074026C9D9BE0061B34A /* Build configuration list for PBXNativeTarget "PixabayAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9E4074126C9D9BE0061B34A /* Debug */,
+				C9E4074226C9D9BE0061B34A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
