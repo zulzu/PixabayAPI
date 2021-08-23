@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageCell: UITableViewCell {
+class ImageCollectionCell: UICollectionViewCell {
   
   private let bgView: UIView = {
     let bgView = UIView()
@@ -48,9 +48,8 @@ class ImageCell: UITableViewCell {
     ])
   }
   
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
+  override init(frame: CGRect) {
+    super.init(frame: .zero)
     setupView()
     setupLayouts()
   }

@@ -31,7 +31,7 @@ class SearchResultsViewModel {
   }
   
   func fetchImageData(query: String) {
-    networkProvider.fetchImageData(url: networkProvider.createURL(query: query, amount: 25)) { (result) in
+    networkProvider.fetchImageData(url: networkProvider.createURL(query: query, amount: 50)) { (result) in
       switch result {
       case let .failure(error):
         print (error)
@@ -41,15 +41,6 @@ class SearchResultsViewModel {
         }
       }
     }
-  }
-  
-  func calculateCellHeight(row: Int, images: [ImageInfo]) -> CGFloat {
-    let defaultSize = kUI.ImageSize.regular + kUI.Padding.defaultPadding
-    let imageWidth = Double(images[row].webformatWidth)
-    let imageHeight = Double(images[row].webformatHeight)
-    let contentWidth = Double(UIScreen.main.bounds.width - (kUI.Padding.defaultPadding * 2))
-    let cellHeight = round( (imageHeight / (imageWidth / contentWidth)) * 100 ) / 100
-    return cellHeight > 0 ? CGFloat(cellHeight) : defaultSize
   }
   
   func calculateImageSize(image: UIImage) -> CGSize {

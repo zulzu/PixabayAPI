@@ -11,15 +11,15 @@ class SearchResultsViewController: UIViewController {
   
   lazy var viewModel = SearchResultsViewModel(
     imageInfoDidUpdate: { [weak self] in
-      self?.imagesTableView.reloadData()
+      self?.imagesCollectionView.reloadData()
       self?.checkSearchResults()
     })
   var searchString = ""
-  private let imagesTableView: UITableView
+  private let imagesCollectionView: UICollectionView
   private let cache = NSCache<NSNumber, UIImage>()
   
-  required init(tableView: UITableView = UITableView()) {
-    self.imagesTableView = tableView
+  required init(collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())) {
+    self.imagesCollectionView = collectionView
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -31,7 +31,8 @@ class SearchResultsViewController: UIViewController {
     super.viewDidLoad()
     viewModel.fetchImageData(query: searchString)
     setupViews()
-    setupLayouts()
+    setupCollectionLayout()
+    setupCollectionViewConstraints()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -40,21 +41,30 @@ class SearchResultsViewController: UIViewController {
   
   private func setupViews() {
     view.backgroundColor = .bgColour
-    imagesTableView.dataSource = self
-    imagesTableView.delegate = self
-    view.addSubview(imagesTableView)
-    imagesTableView.register(ImageCell.self, forCellReuseIdentifier: "searchCell")
-    imagesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-    imagesTableView.bounces = false
+    imagesCollectionView.dataSource = self
+    imagesCollectionView.delegate = self
+    view.addSubview(imagesCollectionView)
+    imagesCollectionView.register(ImageCollectionCell.self, forCellWithReuseIdentifier: "searchCell")
+    imagesCollectionView.bounces = false
+    imagesCollectionView.backgroundColor = .bgColour
   }
   
-  private func setupLayouts() {
-    imagesTableView.translatesAutoresizingMaskIntoConstraints = false
+  func setupCollectionLayout() {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.width / 2)
+    layout.minimumLineSpacing = 0
+    layout.minimumInteritemSpacing = 0
+    imagesCollectionView.collectionViewLayout = layout
+  }
+  
+  private func setupCollectionViewConstraints() {
+    imagesCollectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      imagesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      imagesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUI.Padding.defaultPadding),
-      imagesTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-      imagesTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+      imagesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      imagesCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUI.Padding.defaultPadding),
+      imagesCollectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+      imagesCollectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
     ])
   }
   
@@ -76,16 +86,15 @@ class SearchResultsViewController: UIViewController {
   }
 }
 
-extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchResultsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return viewModel.imageInfo.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! ImageCell
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchCell", for: indexPath) as! ImageCollectionCell
     cell.backgroundColor = UIColor.bgColour
-    cell.selectionStyle = .none
     //sets the value for the cached item
     let itemNumber = NSNumber(value: indexPath.item)
     //sets the image
@@ -107,12 +116,8 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     return cell
   }
   
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return viewModel.calculateCellHeight(row: indexPath.row, images: viewModel.imageInfo)
-  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let cell = tableView.cellForRow(at: indexPath) as! ImageCell
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath) as! ImageCollectionCell
     guard let imageToPass = cell.searchImage.image else {
       return
     }

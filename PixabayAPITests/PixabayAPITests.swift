@@ -10,7 +10,7 @@ import XCTest
 
 class SearchResultsViewControllerTests: XCTestCase {
   
-  let viewModel = SearchResultsViewController()
+  let viewModel = PhotographerViewController()
   let images = [ImageInfo(id: 5,
                           previewURL: URL(string: "https://imgur.com/rickroll_small.jpg")!,
                           previewWidth: 500,
