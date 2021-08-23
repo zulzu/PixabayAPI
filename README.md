@@ -9,3 +9,4 @@ There are no third party dependencies, just launch the app in Xcode. The app sup
 ## My main goals with the project
 
 I wanted to have a simple app with a few view controllers where I can play around with networking, different architectural patterns, unit testing and all kind of small technical stuff to learn new things while still working on something "real", instead of checking some made up problems with random tutorials.
+The app is WIP, still changing the UI and adding new features to it.
