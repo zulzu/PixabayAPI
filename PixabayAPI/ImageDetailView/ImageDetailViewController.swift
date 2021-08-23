@@ -41,7 +41,7 @@ class ImageDetailViewController: UIViewController {
   
   private func handlePhotographerButtonTap(_ customView: ImageDetailView) {
     let photographerVC = PhotographerViewController()
-    photographerVC.searchString = "user:\(imageInfo.user)"
+    photographerVC.photographer = imageInfo.user
     updateNavbar()
     self.navigationController?.pushViewController(photographerVC, animated: true)
   }

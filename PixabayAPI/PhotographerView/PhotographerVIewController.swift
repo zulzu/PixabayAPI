@@ -1,5 +1,5 @@
 //
-//  PhotographerVIewController.swift
+//  PhotographerViewController.swift
 //  PixabayAPI
 //
 //  Created by Andras Pal on 23/08/2021.
@@ -9,11 +9,14 @@ import UIKit
 
 class PhotographerViewController: UIViewController {
   
+  var photographer = ""
   lazy var viewModel = PhotographerViewModel(
     imageInfoDidUpdate: { [weak self] in
       self?.imagesTableView.reloadData()
     })
-  var searchString = ""
+  lazy var searchString = {
+    "user:\(photographer)"
+  }()
   private let imagesTableView: UITableView
   private let cache = NSCache<NSNumber, UIImage>()
   
@@ -58,11 +61,7 @@ class PhotographerViewController: UIViewController {
   }
   
   private func setupNavbar() {
-    let start = searchString.index(searchString.startIndex, offsetBy: 5)
-    let end = searchString.index(searchString.endIndex, offsetBy: 0)
-    let range = start..<end
-    let mySubstring = searchString[range]
-    navigationItem.title = "Photos from \(mySubstring)"
+    navigationItem.title = "Photos from \(photographer)"
   }
   
   private func updateNavbar() {
