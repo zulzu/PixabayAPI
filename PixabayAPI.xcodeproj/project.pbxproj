@@ -29,6 +29,9 @@
 		C9E4073226C975F90061B34A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073126C975F90061B34A /* UIViewController.swift */; };
 		C9E4073426C9C4DC0061B34A /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073326C9C4DC0061B34A /* SearchResultsViewModel.swift */; };
 		C9E4073C26C9D9BE0061B34A /* PixabayAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073B26C9D9BE0061B34A /* PixabayAPITests.swift */; };
+		C9E4076A26D3A4B70061B34A /* ImageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4076926D3A4B70061B34A /* ImageTableCell.swift */; };
+		C9E4076C26D3A4E20061B34A /* PhotographerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4076B26D3A4E20061B34A /* PhotographerViewModel.swift */; };
+		C9E4076E26D3A50E0061B34A /* PhotographerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4076D26D3A50E0061B34A /* PhotographerVIewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		C9E4073926C9D9BE0061B34A /* PixabayAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixabayAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E4073B26C9D9BE0061B34A /* PixabayAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayAPITests.swift; sourceTree = "<group>"; };
 		C9E4073D26C9D9BE0061B34A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9E4076926D3A4B70061B34A /* ImageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableCell.swift; sourceTree = "<group>"; };
+		C9E4076B26D3A4E20061B34A /* PhotographerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographerViewModel.swift; sourceTree = "<group>"; };
+		C9E4076D26D3A50E0061B34A /* PhotographerVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographerVIewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 				C9E4067726C539930061B34A /* SearchView */,
 				C9E4068526C59C360061B34A /* SearchResults */,
 				C9E4072A26C9723A0061B34A /* ImageDetailView */,
+				C9E4076826D3A4970061B34A /* PhotographerView */,
 				C9E4067A26C54E2C0061B34A /* Shared */,
 				C9E4065F26C533F80061B34A /* Assets.xcassets */,
 				C9E4066126C533F80061B34A /* LaunchScreen.storyboard */,
@@ -214,6 +221,16 @@
 				C9E4073D26C9D9BE0061B34A /* Info.plist */,
 			);
 			path = PixabayAPITests;
+			sourceTree = "<group>";
+		};
+		C9E4076826D3A4970061B34A /* PhotographerView */ = {
+			isa = PBXGroup;
+			children = (
+				C9E4076926D3A4B70061B34A /* ImageTableCell.swift */,
+				C9E4076B26D3A4E20061B34A /* PhotographerViewModel.swift */,
+				C9E4076D26D3A50E0061B34A /* PhotographerVIewController.swift */,
+			);
+			path = PhotographerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,9 +332,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9E4076E26D3A50E0061B34A /* PhotographerVIewController.swift in Sources */,
 				C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */,
 				C9E4068926C5B5C30061B34A /* NetworkError.swift in Sources */,
 				C9E4073226C975F90061B34A /* UIViewController.swift in Sources */,
+				C9E4076C26D3A4E20061B34A /* PhotographerViewModel.swift in Sources */,
 				C9E4068426C59B300061B34A /* SearchResultsViewController.swift in Sources */,
 				C9E4067F26C5637C0061B34A /* Colours.swift in Sources */,
 				C9E4068226C59AEE0061B34A /* ImageCell.swift in Sources */,
@@ -329,6 +348,7 @@
 				C9E4066E26C534A00061B34A /* ImageInfo.swift in Sources */,
 				C9E4072C26C972770061B34A /* ImageDetail.swift in Sources */,
 				C9E4067626C539740061B34A /* SearchView.swift in Sources */,
+				C9E4076A26D3A4B70061B34A /* ImageTableCell.swift in Sources */,
 				C9E4065726C533F60061B34A /* AppDelegate.swift in Sources */,
 				C9E4068726C59DAF0061B34A /* PixabaySearchNavigationController.swift in Sources */,
 				C9E4066C26C534770061B34A /* SearchResults.swift in Sources */,

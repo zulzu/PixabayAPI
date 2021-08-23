@@ -33,8 +33,25 @@ class ImageDetailViewController: UIViewController {
   override func loadView() {
     
     view = imageDetailView
+    imageDetailView.photographerTappedHandler = handlePhotographerButtonTap(_:)
     imageDetailView.bgImage.image = image
-    imageDetailView.userName.text = "Photographer: " + imageInfo.user
+    imageDetailView.photographerButton.setTitle("Photographer: \(imageInfo.user)", for: .normal)
     imageDetailView.numberOfLikes.text = "Number of likes: \(imageInfo.likes)"
+  }
+  
+  private func handlePhotographerButtonTap(_ customView: ImageDetailView) {
+    let photographerVC = PhotographerViewController()
+    photographerVC.searchString = "user:\(imageInfo.user)"
+    updateNavbar()
+    self.navigationController?.pushViewController(photographerVC, animated: true)
+  }
+  
+  private func updateNavbar() {
+    navigationController?.setNavigationBarHidden(false, animated: true)
+    let backButton = UIBarButtonItem()
+    backButton.title = "Back"
+    backButton.tintColor = .mainTextColour
+    navigationItem.backBarButtonItem = backButton
+    navigationItem.title = ""
   }
 }
