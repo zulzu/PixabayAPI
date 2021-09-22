@@ -31,7 +31,7 @@
 		C9E4073C26C9D9BE0061B34A /* PixabayAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4073B26C9D9BE0061B34A /* PixabayAPITests.swift */; };
 		C9E4076A26D3A4B70061B34A /* ImageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4076926D3A4B70061B34A /* ImageTableCell.swift */; };
 		C9E4076C26D3A4E20061B34A /* PhotographerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4076B26D3A4E20061B34A /* PhotographerViewModel.swift */; };
-		C9E4076E26D3A50E0061B34A /* PhotographerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4076D26D3A50E0061B34A /* PhotographerVIewController.swift */; };
+		C9E4076E26D3A50E0061B34A /* PhotographerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4076D26D3A50E0061B34A /* PhotographerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,7 @@
 		C9E4073D26C9D9BE0061B34A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9E4076926D3A4B70061B34A /* ImageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableCell.swift; sourceTree = "<group>"; };
 		C9E4076B26D3A4E20061B34A /* PhotographerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographerViewModel.swift; sourceTree = "<group>"; };
-		C9E4076D26D3A50E0061B34A /* PhotographerVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographerVIewController.swift; sourceTree = "<group>"; };
+		C9E4076D26D3A50E0061B34A /* PhotographerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,7 +228,7 @@
 			children = (
 				C9E4076926D3A4B70061B34A /* ImageTableCell.swift */,
 				C9E4076B26D3A4E20061B34A /* PhotographerViewModel.swift */,
-				C9E4076D26D3A50E0061B34A /* PhotographerVIewController.swift */,
+				C9E4076D26D3A50E0061B34A /* PhotographerViewController.swift */,
 			);
 			path = PhotographerView;
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E4076E26D3A50E0061B34A /* PhotographerVIewController.swift in Sources */,
+				C9E4076E26D3A50E0061B34A /* PhotographerViewController.swift in Sources */,
 				C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */,
 				C9E4068926C5B5C30061B34A /* NetworkError.swift in Sources */,
 				C9E4073226C975F90061B34A /* UIViewController.swift in Sources */,
@@ -509,13 +509,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7U8H9SK8NB;
 				INFOPLIST_FILE = PixabayAPI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrasPal.PixabayAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -529,13 +530,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7U8H9SK8NB;
 				INFOPLIST_FILE = PixabayAPI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrasPal.PixabayAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
