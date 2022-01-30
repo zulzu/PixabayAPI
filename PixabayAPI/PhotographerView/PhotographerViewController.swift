@@ -54,7 +54,7 @@ class PhotographerViewController: UIViewController {
     imagesTableView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       imagesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      imagesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -kUI.Padding.defaultPadding),
+      imagesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -UI.Padding.defaultPadding),
       imagesTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
       imagesTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
     ])

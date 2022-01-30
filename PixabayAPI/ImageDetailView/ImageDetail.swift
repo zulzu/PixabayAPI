@@ -46,11 +46,11 @@ class ImageDetailView: UIView {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.backgroundColor = .textFieldBG
     button.contentHorizontalAlignment = .leading
-    button.titleLabel?.font = UIFont.systemFont(ofSize: kUI.Size.smallFont)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: UI.Size.smallFont)
     button.titleLabel?.textColor = .mainTextColour
     button.setImage(UIImage(named: "chevronRight"), for: .normal)
     button.titleEdgeInsets = UIEdgeInsets(top: 5, left: 12, bottom: 5, right: 5)
-    button.imageEdgeInsets = UIEdgeInsets(top: 5, left: UIScreen.main.bounds.width - (kUI.Padding.defaultPadding * 2), bottom: 5, right: 5)
+    button.imageEdgeInsets = UIEdgeInsets(top: 5, left: UIScreen.main.bounds.width - (UI.Padding.defaultPadding * 2), bottom: 5, right: 5)
     button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     return button
   }()
@@ -64,7 +64,7 @@ class ImageDetailView: UIView {
   
   let numberOfLikes: UILabel = {
     let title = UILabel()
-    title.font = UIFont.systemFont(ofSize: kUI.Size.smallFont)
+    title.font = UIFont.systemFont(ofSize: UI.Size.smallFont)
     title.textColor = .mainTextColour
     title.numberOfLines = 2
     title.textAlignment = .left
@@ -116,7 +116,7 @@ class ImageDetailView: UIView {
     ])
     
     NSLayoutConstraint.activate([
-      photographerButton.topAnchor.constraint(equalTo: bgImage.bottomAnchor, constant: kUI.Padding.defaultPadding),
+      photographerButton.topAnchor.constraint(equalTo: bgImage.bottomAnchor, constant: UI.Padding.defaultPadding),
       photographerButton.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: 0),
       photographerButton.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: 0),
       photographerButton.heightAnchor.constraint(equalToConstant: 40)
@@ -130,9 +130,9 @@ class ImageDetailView: UIView {
     ])
     
     NSLayoutConstraint.activate([
-      numberOfLikes.topAnchor.constraint(equalTo: photographerButton.bottomAnchor, constant: kUI.Padding.defaultPadding),
-      numberOfLikes.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: kUI.Padding.defaultPadding),
-      numberOfLikes.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kUI.Padding.defaultPadding)
+      numberOfLikes.topAnchor.constraint(equalTo: photographerButton.bottomAnchor, constant: UI.Padding.defaultPadding),
+      numberOfLikes.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: UI.Padding.defaultPadding),
+      numberOfLikes.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -UI.Padding.defaultPadding)
     ])
   }
   

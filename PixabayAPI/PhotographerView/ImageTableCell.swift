@@ -35,16 +35,16 @@ class ImageTableCell: UITableViewCell {
   private func setupLayouts() {
     
     NSLayoutConstraint.activate([
-      bgView.topAnchor.constraint(equalTo: self.topAnchor, constant: kUI.Padding.defaultPadding),
-      bgView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -kUI.Padding.defaultPadding),
-      bgView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: kUI.Padding.defaultPadding),
-      bgView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: kUI.Padding.defaultPadding)
+      bgView.topAnchor.constraint(equalTo: self.topAnchor, constant: UI.Padding.defaultPadding),
+      bgView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -UI.Padding.defaultPadding),
+      bgView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: UI.Padding.defaultPadding),
+      bgView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: UI.Padding.defaultPadding)
     ])
     
     NSLayoutConstraint.activate([
       searchImage.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
-      searchImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
-      searchImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kUI.Padding.defaultPadding),
+      searchImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: UI.Padding.defaultPadding),
+      searchImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -UI.Padding.defaultPadding),
     ])
   }
   

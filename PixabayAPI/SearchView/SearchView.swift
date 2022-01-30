@@ -35,7 +35,7 @@ class SearchView: UIView {
   
   let title: UILabel = {
     let title = UILabel()
-    title.font = UIFont.systemFont(ofSize: kUI.Size.regularFont)
+    title.font = UIFont.systemFont(ofSize: UI.Size.regularFont)
     title.text = "Stunning free images"
     title.textColor = .mainTextColour
     title.numberOfLines = 0
@@ -48,7 +48,7 @@ class SearchView: UIView {
     let textView = TextFieldWithPadding()
     textView.translatesAutoresizingMaskIntoConstraints = false
     textView.backgroundColor = UIColor.textFieldBG
-    textView.layer.cornerRadius = kUI.Size.cornerRadius
+    textView.layer.cornerRadius = UI.Size.cornerRadius
     textView.font = UIFont.preferredFont(forTextStyle: .body)
     textView.textColor = UIColor.mainTextColour
     textView.attributedPlaceholder = NSAttributedString(string: "Search images",
@@ -63,7 +63,7 @@ class SearchView: UIView {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.backgroundColor = .buttonColour
-    button.layer.cornerRadius = kUI.Size.cornerRadius
+    button.layer.cornerRadius = UI.Size.cornerRadius
     button.setTitle("Search now", for: UIControl.State.normal)
     button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     return button
@@ -97,32 +97,32 @@ class SearchView: UIView {
     ])
     
     NSLayoutConstraint.activate([
-      pixabayLogo.topAnchor.constraint(equalTo: bgView.topAnchor, constant: kUI.Padding.largePadding * 2),
-      pixabayLogo.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
-      pixabayLogo.heightAnchor.constraint(equalToConstant: kUI.Size.pixaLogoHeight),
+      pixabayLogo.topAnchor.constraint(equalTo: bgView.topAnchor, constant: UI.Padding.largePadding * 2),
+      pixabayLogo.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: UI.Padding.defaultPadding),
+      pixabayLogo.heightAnchor.constraint(equalToConstant: UI.Size.pixaLogoHeight),
       pixabayLogo.widthAnchor.constraint(equalToConstant: calculateLogoWidth())
     ])
     
     NSLayoutConstraint.activate([
-      title.topAnchor.constraint(equalTo: pixabayLogo.bottomAnchor, constant: kUI.Padding.largePadding),
-      title.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
-      title.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kUI.Padding.defaultPadding),
+      title.topAnchor.constraint(equalTo: pixabayLogo.bottomAnchor, constant: UI.Padding.largePadding),
+      title.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: UI.Padding.defaultPadding),
+      title.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -UI.Padding.defaultPadding),
     ])
     
     NSLayoutConstraint.activate([
       
-      textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: kUI.Padding.defaultPadding),
-      textView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
-      textView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kUI.Padding.defaultPadding),
-      textView.heightAnchor.constraint(equalToConstant: kUI.Size.textFieldHeight)
+      textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: UI.Padding.defaultPadding),
+      textView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: UI.Padding.defaultPadding),
+      textView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -UI.Padding.defaultPadding),
+      textView.heightAnchor.constraint(equalToConstant: UI.Size.textFieldHeight)
     ])
     
     NSLayoutConstraint.activate([
       
-      searchButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: kUI.Padding.defaultPadding),
-      searchButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: kUI.Padding.defaultPadding),
-      searchButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -kUI.Padding.defaultPadding),
-      searchButton.heightAnchor.constraint(equalToConstant: kUI.Size.searchButtonHeight)
+      searchButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: UI.Padding.defaultPadding),
+      searchButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: UI.Padding.defaultPadding),
+      searchButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -UI.Padding.defaultPadding),
+      searchButton.heightAnchor.constraint(equalToConstant: UI.Size.searchButtonHeight)
     ])
   }
   

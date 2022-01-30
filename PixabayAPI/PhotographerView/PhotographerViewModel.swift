@@ -44,10 +44,10 @@ class PhotographerViewModel {
   }
   
   func calculateCellHeight(row: Int, images: [ImageInfo]) -> CGFloat {
-    let defaultSize = kUI.ImageSize.regular + kUI.Padding.defaultPadding
+    let defaultSize = UI.ImageSize.regular + UI.Padding.defaultPadding
     let imageWidth = Double(images[row].webformatWidth)
     let imageHeight = Double(images[row].webformatHeight)
-    let contentWidth = Double(UIScreen.main.bounds.width - (kUI.Padding.defaultPadding * 2))
+    let contentWidth = Double(UIScreen.main.bounds.width - (UI.Padding.defaultPadding * 2))
     let cellHeight = round( (imageHeight / (imageWidth / contentWidth)) * 100 ) / 100
     return cellHeight > 0 ? CGFloat(cellHeight) : defaultSize
   }
