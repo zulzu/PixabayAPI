@@ -7,9 +7,14 @@
 
 import UIKit
 
-class NetworkProvider {
+class NetworkProvider: Network {
   
   private let apiKey = "13197033-03eec42c293d2323112b4cca6"
+  private let requestExecutor: NetworkExecutor
+  
+  init(requestExecutor: NetworkExecutor = URLSession.shared) {
+    self.requestExecutor = requestExecutor
+  }
   
   // Url creation, more info here: https://pixabay.com/api/docs/#api_search_images
   func createURL(query: String, amount: Int) -> URL? {
@@ -38,11 +43,11 @@ class NetworkProvider {
       return
     }
     
-    URLSession.shared.dataTask(
+    requestExecutor.executeRequest(
       with: url
     ) { [weak self] data, response, error in
       self?.handleResponse(data: data, response: response, error: error, completion: completion)
-    }.resume()
+    }
   }
   
   // Extract completion handling
@@ -71,18 +76,5 @@ class NetworkProvider {
     catch let unsuccessfulQuery {
       completion(.failure(.other(unsuccessfulQuery)))
     }
-  }
-  
-  // Fetch single image
-  func fetchImage(url: URL, callback: @escaping (UIImage?) -> Void) {
-    
-    let task = URLSession.shared.dataTask(with: url) { data, response, error in
-      guard let data = data, error == nil else {
-        callback(nil)
-        return
-      }
-      callback(UIImage(data: data)!)
-    }
-    task.resume()
   }
 }

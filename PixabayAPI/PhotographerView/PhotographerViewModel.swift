@@ -9,8 +9,14 @@ import UIKit
 
 class PhotographerViewModel {
   
-  let networkProvider = NetworkProvider()
-  var searchString = ""
+  //------------------------------------
+  // MARK: Properties
+  //------------------------------------
+  // # Private/Fileprivate
+  private let networkProvider: Network
+  
+  // # Public/Internal/Open
+  let imageLoader: ImageLoaderService
   var imageInfo: [ImageInfo] = [] {
     didSet {
       self.imageInfoDidUpdate()
@@ -18,7 +24,14 @@ class PhotographerViewModel {
   }
   let imageInfoDidUpdate: () -> ()
   
-  init(imageInfoDidUpdate: @escaping ()->()) {
+  //=======================================
+  // MARK: Public Methods
+  //=======================================
+  init(networkProvider: Network = NetworkProvider(),
+       imageLoading: ImageLoaderService = ImageLoaderService(),
+       imageInfoDidUpdate: @escaping ()->()) {
+    self.networkProvider = networkProvider
+    self.imageLoader = imageLoading
     self.imageInfoDidUpdate = imageInfoDidUpdate
   }
   

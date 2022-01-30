@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9ABD92027A730BF007D4E6A /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABD91F27A730BF007D4E6A /* URLSession.swift */; };
+		C9ABD92227A730FD007D4E6A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABD92127A730FD007D4E6A /* Network.swift */; };
+		C9ABD92427A73138007D4E6A /* NetworkExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABD92327A73138007D4E6A /* NetworkExecutor.swift */; };
+		C9ABD92627A731A4007D4E6A /* ImageLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABD92527A731A4007D4E6A /* ImageLoaderService.swift */; };
 		C9E4065726C533F60061B34A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4065626C533F60061B34A /* AppDelegate.swift */; };
 		C9E4065926C533F60061B34A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4065826C533F60061B34A /* SceneDelegate.swift */; };
 		C9E4065B26C533F60061B34A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E4065A26C533F60061B34A /* SearchViewController.swift */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C9ABD91F27A730BF007D4E6A /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		C9ABD92127A730FD007D4E6A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		C9ABD92327A73138007D4E6A /* NetworkExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExecutor.swift; sourceTree = "<group>"; };
+		C9ABD92527A731A4007D4E6A /* ImageLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderService.swift; sourceTree = "<group>"; };
 		C9E4065326C533F60061B34A /* PixabayAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixabayAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E4065626C533F60061B34A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E4065826C533F60061B34A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,7 +161,10 @@
 		C9E4067426C536680061B34A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				C9ABD92127A730FD007D4E6A /* Network.swift */,
+				C9ABD92327A73138007D4E6A /* NetworkExecutor.swift */,
 				C9E4067226C5357E0061B34A /* NetworkProvider.swift */,
+				C9ABD92527A731A4007D4E6A /* ImageLoaderService.swift */,
 				C9E4068826C5B5C30061B34A /* NetworkError.swift */,
 			);
 			path = Networking;
@@ -191,6 +202,7 @@
 				C9E4067E26C5637C0061B34A /* Colours.swift */,
 				C9E4072F26C973030061B34A /* UIImage.swift */,
 				C9E4073126C975F90061B34A /* UIViewController.swift */,
+				C9ABD91F27A730BF007D4E6A /* URLSession.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +346,7 @@
 			files = (
 				C9E4076E26D3A50E0061B34A /* PhotographerViewController.swift in Sources */,
 				C9E4067326C5357E0061B34A /* NetworkProvider.swift in Sources */,
+				C9ABD92227A730FD007D4E6A /* Network.swift in Sources */,
 				C9E4068926C5B5C30061B34A /* NetworkError.swift in Sources */,
 				C9E4073226C975F90061B34A /* UIViewController.swift in Sources */,
 				C9E4076C26D3A4E20061B34A /* PhotographerViewModel.swift in Sources */,
@@ -341,10 +354,13 @@
 				C9E4067F26C5637C0061B34A /* Colours.swift in Sources */,
 				C9E4068226C59AEE0061B34A /* ImageCollectionCell.swift in Sources */,
 				C9E4067926C54E230061B34A /* TextfieldWithPadding.swift in Sources */,
+				C9ABD92627A731A4007D4E6A /* ImageLoaderService.swift in Sources */,
+				C9ABD92027A730BF007D4E6A /* URLSession.swift in Sources */,
 				C9E4073426C9C4DC0061B34A /* SearchResultsViewModel.swift in Sources */,
 				C9E4073026C973030061B34A /* UIImage.swift in Sources */,
 				C9E4067C26C562E60061B34A /* UIConstants.swift in Sources */,
 				C9E4065B26C533F60061B34A /* SearchViewController.swift in Sources */,
+				C9ABD92427A73138007D4E6A /* NetworkExecutor.swift in Sources */,
 				C9E4066E26C534A00061B34A /* ImageInfo.swift in Sources */,
 				C9E4072C26C972770061B34A /* ImageDetail.swift in Sources */,
 				C9E4067626C539740061B34A /* SearchView.swift in Sources */,
@@ -509,14 +525,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 7U8H9SK8NB;
 				INFOPLIST_FILE = PixabayAPI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.25;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrasPal.PixabayAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -530,14 +546,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 7U8H9SK8NB;
 				INFOPLIST_FILE = PixabayAPI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.25;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrasPal.PixabayAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -9,15 +9,24 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
   
+  //------------------------------------
+  // MARK: Properties
+  //------------------------------------
+  // # Private/Fileprivate
+  private let imagesCollectionView: UICollectionView
+  private let cache = NSCache<NSNumber, UIImage>()
+  
+  // # Public/Internal/Open
   lazy var viewModel = SearchResultsViewModel(
     imageInfoDidUpdate: { [weak self] in
       self?.imagesCollectionView.reloadData()
       self?.checkSearchResults()
     })
   var searchString = ""
-  private let imagesCollectionView: UICollectionView
-  private let cache = NSCache<NSNumber, UIImage>()
   
+  //=======================================
+  // MARK: Public Methods
+  //=======================================
   required init(collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())) {
     self.imagesCollectionView = collectionView
     super.init(nibName: nil, bundle: nil)
@@ -32,13 +41,16 @@ class SearchResultsViewController: UIViewController {
     viewModel.fetchImageData(query: searchString)
     setupViews()
     setupCollectionLayout()
-    setupCollectionViewConstraints()
+    setupConstraints()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     setupNavbar()
   }
   
+  //=======================================
+  // MARK: Private Methods
+  //=======================================
   private func setupViews() {
     view.backgroundColor = .bgColour
     imagesCollectionView.dataSource = self
@@ -49,7 +61,7 @@ class SearchResultsViewController: UIViewController {
     imagesCollectionView.backgroundColor = .bgColour
   }
   
-  func setupCollectionLayout() {
+  private func setupCollectionLayout() {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
     layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.width / 2)
@@ -58,8 +70,9 @@ class SearchResultsViewController: UIViewController {
     imagesCollectionView.collectionViewLayout = layout
   }
   
-  private func setupCollectionViewConstraints() {
+  private func setupConstraints() {
     imagesCollectionView.translatesAutoresizingMaskIntoConstraints = false
+    
     NSLayoutConstraint.activate([
       imagesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       imagesCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -UI.Padding.defaultPadding),
@@ -102,7 +115,7 @@ extension SearchResultsViewController: UICollectionViewDataSource, UICollectionV
       cell.searchImage.image = cachedImage
     } else {
       if let url = viewModel.getImageURL(row: indexPath.row, images: viewModel.imageInfo) {
-        viewModel.networkProvider.fetchImage(url: url) { image in
+        viewModel.imageLoader.fetchImage(url: url) { image in
           DispatchQueue.main.async {
             guard let downloadedImage = image else {
               return cell.searchImage.image = UIImage(named: "missingImage")
